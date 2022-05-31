@@ -1,0 +1,14 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+      - id: check-yaml
+
+  - repo: local
+    hooks:
+      - id: go-unit-tests
+        name: go-unit-tests
+        entry: go test ./... -covermode=atomic -coverprofile=coverage.out
+        pass_filenames: false
+        types: [go]
+        language: system
