@@ -9,14 +9,27 @@ repos:
   - repo: local
     hooks:
       - id: go-unit-tests
-        name: go-unit-tests
+        name: Check Unit Testing
         entry: go test ./... -covermode=atomic -coverprofile=coverage.out
         pass_filenames: false
-        types: [go]
         language: system
       - id: go-vet
-        name: go-vet
+        name: Check Command With Vet
         entry: go vet ./...
         pass_filenames: false
-        types: [go]
+        language: system
+      - id: go-mod-tidy
+        name: Delete Unused Dependency
+        entry: go mod tidy
+        pass_filenames: false
+        language: system
+      - id: go-mod-verify
+        name: Verify Go Module
+        entry: go mod verify
+        pass_filenames: false
+        language: system
+      - id: go-fmt
+        name: Verify & Fix Go Format
+        entry: go fmt ./...
+        pass_filenames: false
         language: system
