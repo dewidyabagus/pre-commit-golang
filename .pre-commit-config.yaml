@@ -10,7 +10,7 @@ repos:
     hooks:
       - id: go-unit-tests
         name: Check Unit Testing
-        entry: go test ./... -covermode=atomic -coverprofile=coverage.out
+        entry: go test -vet=off ./... -covermode=atomic -coverprofile=coverage.out
         pass_filenames: false
         language: system
       - id: go-vet
@@ -31,5 +31,11 @@ repos:
       - id: go-fmt
         name: Verify & Fix Go Format
         entry: go fmt ./...
+        pass_filenames: false
+        language: system
+      - id: go-staticcheck
+        name: Go Static Checking
+        description: checking bugs, performance issues, offers simplifications and enforces style rules
+        entry: staticcheck ./...
         pass_filenames: false
         language: system
