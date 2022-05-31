@@ -3,12 +3,20 @@ repos:
     rev: v2.3.0
     hooks:
       - id: check-yaml
+      - id: check-added-large-files
+      - id: detect-private-key
 
   - repo: local
     hooks:
       - id: go-unit-tests
         name: go-unit-tests
         entry: go test ./... -covermode=atomic -coverprofile=coverage.out
+        pass_filenames: false
+        types: [go]
+        language: system
+      - id: go-vet
+        name: go-vet
+        entry: go vet ./...
         pass_filenames: false
         types: [go]
         language: system
