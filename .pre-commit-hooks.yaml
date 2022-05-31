@@ -1,6 +1,0 @@
-- id: go-unit-testing
-  name: go unit testing
-  entry: go test ./...
-  pass_filenames: false
-  types: [go]
-  language: system
